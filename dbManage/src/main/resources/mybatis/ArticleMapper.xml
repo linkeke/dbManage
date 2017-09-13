@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaoyuan.manage.web.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.demoba.manage.web.entity.Article" >
+    <id column="n_article_id" property="nArticleId" jdbcType="BIGINT" />
+    <result column="c_article_title" property="cArticleTitle" jdbcType="VARCHAR" />
+    <result column="c_article_tag" property="cArticleTag" jdbcType="VARCHAR" />
+    <result column="c_article_imgs" property="cArticleImgs" jdbcType="VARCHAR" />
+    <result column="t_create_time" property="tCreateTime" jdbcType="TIMESTAMP" />
+    <result column="t_update_time" property="tUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="n_create_id" property="nCreateId" jdbcType="BIGINT" />
+     <result column="c_article_content" property="cArticleContent" jdbcType="LONGVARCHAR" />
+     <result column="n_count_comment" property="nCountComment" jdbcType="INTEGER" />
+     <result column="n_top" property="nTop" jdbcType="INTEGER" />
+     <result column="n_article_type" property="nArticleType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_article_id, c_article_title, c_article_tag, c_article_imgs, t_create_time, t_update_time, 
+    n_create_id,c_article_content,n_count_comment,n_top,n_article_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_article
+    where n_article_id = #{nArticleId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_article
+    where n_article_id = #{nArticleId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demoba.manage.web.entity.Article" >
+    insert into t_article (n_article_id, c_article_title, c_article_tag, 
+      c_article_imgs, t_create_time, t_update_time, 
+      n_create_id, 
+      c_article_content,n_count_comment,n_top)
+    values (#{nArticleId,jdbcType=BIGINT}, #{cArticleTitle,jdbcType=VARCHAR}, #{cArticleTag,jdbcType=VARCHAR}, 
+      #{cArticleImgs,jdbcType=VARCHAR}, #{tCreateTime,jdbcType=TIMESTAMP}, #{tUpdateTime,jdbcType=TIMESTAMP}, 
+      #{nCreateId,jdbcType=BIGINT},
+      #{cArticleContent,jdbcType=LONGVARCHAR},#{nCountComment,jdbcType=INTEGER},#{nTop,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demoba.manage.web.entity.Article" >
+    insert into t_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nArticleId != null" >
+        n_article_id,
+      </if>
+      <if test="cArticleTitle != null" >
+        c_article_title,
+      </if>
+      <if test="cArticleTag != null" >
+        c_article_tag,
+      </if>
+      <if test="cArticleImgs != null" >
+        c_article_imgs,
+      </if>
+      <if test="tCreateTime != null" >
+        t_create_time,
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time,
+      </if>
+      <if test="nCreateId != null" >
+        n_create_id,
+      </if>
+      <if test="cArticleContent != null" >
+        c_article_content,
+      </if>
+      <if test="nCountComment!=null">
+      n_count_comment,
+      </if>
+      <if test="nTop!=null">
+      n_top,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nArticleId != null" >
+        #{nArticleId,jdbcType=BIGINT},
+      </if>
+      <if test="cArticleTitle != null" >
+        #{cArticleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="cArticleTag != null" >
+        #{cArticleTag,jdbcType=VARCHAR},
+      </if>
+      <if test="cArticleImgs != null" >
+        #{cArticleImgs,jdbcType=VARCHAR},
+      </if>
+      <if test="tCreateTime != null" >
+        #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tUpdateTime != null" >
+        #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nCreateId != null" >
+        #{nCreateId,jdbcType=BIGINT},
+      </if>
+      <if test="nSchoolId != null" >
+        #{nSchoolId,jdbcType=BIGINT},
+      </if>
+      <if test="cSchoolName != null" >
+        #{cSchoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="cArticleContent != null" >
+        #{cArticleContent,jdbcType=LONGVARCHAR},
+      </if>
+       <if test="nCountComment!=null">
+     	#{nCountComment,jdbcType=INTEGER},
+      </if>
+      <if test="nSubmitStatus!=null">
+     	#{nSubmitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="nTop!=null">
+    	#{nTop,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demoba.manage.web.entity.Article" >
+    update t_article
+    <set >
+      <if test="cArticleTitle != null" >
+        c_article_title = #{cArticleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="cArticleTag != null" >
+        c_article_tag = #{cArticleTag,jdbcType=VARCHAR},
+      </if>
+      <if test="cArticleImgs != null" >
+        c_article_imgs = #{cArticleImgs,jdbcType=VARCHAR},
+      </if>
+      <if test="tCreateTime != null" >
+        t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nCreateId != null" >
+        n_create_id = #{nCreateId,jdbcType=BIGINT},
+      </if>
+      <if test="cArticleContent != null" >
+        c_article_content = #{cArticleContent,jdbcType=LONGVARCHAR},
+      </if>
+       <if test="nCountComment!=null">
+      n_count_comment=#{nCountComment,jdbcType=INTEGER},
+      </if>
+      <if test="nTop!=null">
+    	n_top = #{nTop,jdbcType=INTEGER},
+      </if>
+    </set>
+    where n_article_id = #{nArticleId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.demoba.manage.web.entity.Article" >
+    update t_article
+    set c_article_title = #{cArticleTitle,jdbcType=VARCHAR},
+      c_article_tag = #{cArticleTag,jdbcType=VARCHAR},
+      c_article_imgs = #{cArticleImgs,jdbcType=VARCHAR},
+      t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      n_create_id = #{nCreateId,jdbcType=BIGINT},
+      c_article_content = #{cArticleContent,jdbcType=LONGVARCHAR},
+      n_count_comment = #{nCountComment,jdbcType=INTEGER},
+      n_top =#{nTop,jdbcType=INTEGER}
+    where n_article_id = #{nArticleId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demoba.manage.web.entity.Article" >
+    update t_article
+    set c_article_title = #{cArticleTitle,jdbcType=VARCHAR},
+      c_article_tag = #{cArticleTag,jdbcType=VARCHAR},
+      c_article_imgs = #{cArticleImgs,jdbcType=VARCHAR},
+      t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      n_create_id = #{nCreateId,jdbcType=BIGINT},
+      c_article_content = #{cArticleContent,jdbcType=LONGVARCHAR},
+      n_count_comment = #{nCountComment,jdbcType=INTEGER},
+      n_top =#{nTop,jdbcType=INTEGER}
+    where n_article_id = #{nArticleId,jdbcType=BIGINT}
+  </update>
+  <select id="findByParam" resultMap="BaseResultMap">
+  select * from t_article
+  <where>
+   <if test="userId!=null">
+   and n_create_id=#{userId}
+   </if>
+   <if test="attentionUserIds!=null and attentionUserIds.size>0">
+   and n_create_id in
+        <foreach collection="attentionUserIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+   </if>
+  </where>
+  order by n_top desc,t_create_time desc
+  <if test="startRow!=null">
+  limit #{startRow},#{pageSize}
+  </if>
+  </select>
+  <select id="countByParam" resultType="java.lang.Integer">
+  select count(*) from t_article
+  <where>
+   <if test="userId!=null">
+   and n_create_id=#{userId}
+   </if>
+   <if test="attentionUserIds!=null and attentionUserIds.size>0">
+   and n_create_id in
+        <foreach collection="attentionUserIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+   </if>
+  </where>
+  </select>
+  
+  <select id="findArticleList"  resultMap="BaseResultMap">
+ 	 SELECT * FROM t_article
+	  <where>
+	  	<if test="articleType!=null and articleType!=''">
+	 	  and n_article_type=#{articleType}
+	 	  </if>
+	 	  <if test="keywords!=null and keywords!=''">
+	 	  and
+	 	  	(
+    		c_article_title like CONCAT('%','${keywords}','%' ) 
+   			 )
+	 	  </if>
+	 	   <if test="beginDate!=null and beginDate!=''">
+		  	<![CDATA[
+		      and DATE_FORMAT(t_create_time, '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(#{beginDate}, '%Y-%m-%d %H:%i:%s')
+			]]>
+		  </if>
+		  <if test="endDate!=null and endDate!=''">
+		  <![CDATA[
+		      and DATE_FORMAT(t_create_time, '%Y-%m-%d %H:%i:%s') <=  DATE_FORMAT(#{endDate}, '%Y-%m-%d %H:%i:%s')
+			]]>
+		  </if>
+	  </where>
+	   <if test="startRow!=null">
+	   	   limit #{startRow},#{pageSize}
+	     </if>
+ </select>
+  <select id="countArticleList"  resultType="java.lang.Integer">
+ 	 SELECT count(*) FROM t_article
+	  <where>
+	   	<if test="articleType!=null and articleType!=''">
+	 	  and n_article_type=#{articleType}
+	 	  </if>
+	 	  <if test="keywords!=null and keywords!=''">
+	 	  and
+	 	  	(
+    		c_article_title like CONCAT('%','${keywords}','%' ) 
+   			 )
+	 	  </if>
+	 	   <if test="beginDate!=null and beginDate!=''">
+		  	<![CDATA[
+		      and DATE_FORMAT(t_create_time, '%Y-%m-%d %H:%i:%s') >=  DATE_FORMAT(#{beginDate}, '%Y-%m-%d %H:%i:%s')
+			]]>
+		  </if>
+		  <if test="endDate!=null and endDate!=''">
+		  <![CDATA[
+		      and DATE_FORMAT(t_create_time, '%Y-%m-%d %H:%i:%s') <=  DATE_FORMAT(#{endDate}, '%Y-%m-%d %H:%i:%s')
+			]]>
+		  </if>
+	  </where>
+ </select>
+  
+  
+</mapper>

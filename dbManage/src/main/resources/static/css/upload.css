@@ -1,0 +1,20 @@
+.pic1{
+	border:1px solid gray;
+    margin-top: 0px;
+    padding-bottom: 10px;
+} 
+.pic2,.pic3,.pic4,.pic5{
+	border:1px solid gray;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.upload-label{
+    margin-top: 3px;
+    margin-bottom:20px;
+    cursor: text;
+    display: block;
+    color: #555;    
+}
+.input-group{
+   	width: 80%;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>智能车展解决方案</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link th:href="@{/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <!-- NProgress -->
+    <link th:href="@{/vendors/nprogress/nprogress.css}" rel="stylesheet"/>
+    <!-- Animate.css -->
+    <link th:href="@{/vendors/animate.css/animate.min.css}" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link th:href="@{/build/css/custom.min.css}" rel="stylesheet"/>
+  </head>
+
+  <body class="login">
+    <div>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form>
+              <h1>登录</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" id="account" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" id="password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" id="loginBtn">登录</a>
+               <!--  <a class="reset_pass" href="#">Lost your password?</a> -->
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> 猫投鹰票务管理系统</h1>
+                  <p>copyright © 2016-2017 深圳市猫投鹰信息科技有限公司</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+      </div>
+    </div>
+    <script th:src="@{/js/common/jquery-1.11.1.min.js}"></script>
+    <script th:src="@{/vendors/layer/layer.js}"></script>
+    <script th:src="@{/js/common/owl.js}"></script>
+    <script th:src="@{/js/system/login.js}"></script> 
+  </body>
+</html>

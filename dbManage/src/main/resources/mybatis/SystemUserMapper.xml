@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demoba.manage.web.dao.SystemUserMapper" >
+  <resultMap id="BaseResultMap" type="com.demoba.manage.web.entity.SystemUser" >
+    <id column="n_user_id" property="nUserId" jdbcType="BIGINT" />
+    <result column="c_user_name" property="cUserName" jdbcType="VARCHAR" />
+    <result column="c_realname" property="cRealName" jdbcType="VARCHAR" />
+    <result column="c_user_pwd" property="cUserPwd" jdbcType="VARCHAR" />
+    <result column="n_create_id" property="nCreateId" jdbcType="BIGINT" />
+    <result column="t_create_time" property="tCreateTime" jdbcType="TIMESTAMP" />
+    <result column="n_update_id" property="nUpdateId" jdbcType="BIGINT" />
+    <result column="t_update_time" property="tUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="n_status" property="nStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_user_id, c_user_name, c_user_pwd, n_create_id, t_create_time, n_update_id, t_update_time, 
+    n_status,c_realname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_system_user
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_system_user
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demoba.manage.web.entity.SystemUser" >
+    insert into t_system_user (n_user_id, c_user_name, c_user_pwd, 
+      n_create_id, t_create_time, n_update_id, 
+      t_update_time, n_status,c_realname)
+    values (#{nUserId,jdbcType=BIGINT}, #{cUserName,jdbcType=VARCHAR}, #{cUserPwd,jdbcType=VARCHAR}, 
+      #{nCreateId,jdbcType=BIGINT}, #{tCreateTime,jdbcType=TIMESTAMP}, #{nUpdateId,jdbcType=BIGINT}, 
+      #{tUpdateTime,jdbcType=TIMESTAMP}, #{nStatus,jdbcType=INTEGER},#{cRealName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demoba.manage.web.entity.SystemUser" useGeneratedKeys="true" keyProperty="nUserId">
+    insert into t_system_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nUserId != null" >
+        n_user_id,
+      </if>
+      <if test="cUserName != null" >
+        c_user_name,
+      </if>
+      <if test="cRealName != null" >
+        c_realname,
+      </if>
+      <if test="cUserPwd != null" >
+        c_user_pwd,
+      </if>
+      <if test="nCreateId != null" >
+        n_create_id,
+      </if>
+      <if test="tCreateTime != null" >
+        t_create_time,
+      </if>
+      <if test="nUpdateId != null" >
+        n_update_id,
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time,
+      </if>
+      <if test="nStatus != null" >
+        n_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nUserId != null" >
+        #{nUserId,jdbcType=BIGINT},
+      </if>
+      <if test="cUserName != null" >
+        #{cUserName,jdbcType=VARCHAR},
+      </if>
+       <if test="cRealName != null" >
+         #{cRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserPwd != null" >
+        #{cUserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nCreateId != null" >
+        #{nCreateId,jdbcType=BIGINT},
+      </if>
+      <if test="tCreateTime != null" >
+        #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUpdateId != null" >
+        #{nUpdateId,jdbcType=BIGINT},
+      </if>
+      <if test="tUpdateTime != null" >
+        #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nStatus != null" >
+        #{nStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demoba.manage.web.entity.SystemUser" >
+    update t_system_user
+    <set >
+      <if test="cUserName != null" >
+        c_user_name = #{cUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="cRealName != null" >
+        c_realname = #{cRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserPwd != null" >
+        c_user_pwd = #{cUserPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="nCreateId != null" >
+        n_create_id = #{nCreateId,jdbcType=BIGINT},
+      </if>
+      <if test="tCreateTime != null" >
+        t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nUpdateId != null" >
+        n_update_id = #{nUpdateId,jdbcType=BIGINT},
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nStatus != null" >
+        n_status = #{nStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demoba.manage.web.entity.SystemUser" >
+    update t_system_user
+    set c_user_name = #{cUserName,jdbcType=VARCHAR},
+      c_user_pwd = #{cUserPwd,jdbcType=VARCHAR},
+      n_create_id = #{nCreateId,jdbcType=BIGINT},
+      t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      n_update_id = #{nUpdateId,jdbcType=BIGINT},
+      t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      n_status = #{nStatus,jdbcType=INTEGER},
+       c_realname = #{cRealName,jdbcType=VARCHAR}
+    where n_user_id = #{nUserId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="login" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_system_user
+    where c_user_name = #{userName,jdbcType=VARCHAR} and c_user_pwd=#{userPwd} and n_status=1
+  </select>
+  <select id="findByUserName" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_system_user
+    where c_user_name = #{userName,jdbcType=VARCHAR}  and n_status=1
+  </select>
+  
+  <select id="findByParam" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_system_user
+    <where>
+    n_status=1
+    <if test="keyword!=null and keyword!=''">
+    and c_user_name like CONCAT('%',#{keyword},'%' )
+    </if>
+    </where>
+    </select>
+    <select id="countByParam" resultType="int" >
+    select 
+    count(*)
+    from t_system_user
+    <where>
+    n_status=1
+    <if test="keyword!=null and keyword!=''">
+    and c_user_name like CONCAT('%',#{keyword},'%' )
+    </if>
+    </where>
+  </select>
+</mapper>

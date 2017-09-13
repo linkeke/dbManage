@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+    <link rel="icon" th:href="@{/images/favicon.ico}"/>
+	<link rel="stylesheet" th:href="@{/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/bootstrapvalidator-master/dist/css/bootstrapValidator.css}"/>
+    <link rel="stylesheet" th:href="@{/vendors/layer/skin/layer.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/vendors/zTree_v3-master/css/zTreeStyle/zTreeStyle.css}" type="text/css"/>
+
+<!--[if IE 6]>
+    <![endif]-->
+<title>智能车展解决方案</title>
+<meta name="keywords" content="猫投鹰,客流,客流统计系统"/>
+<meta name="description" content="猫投鹰客流统计系统"/>
+</head>
+<body>
+	<div class="container wrapper">
+		<div class="dialog">
+			  <div class="card">
+			
+			    <div class="card-block">
+			      <div style="margin: 0 -15px;">
+			        
+			      </div>
+			      
+			      <form role="form" class="new_user" id="new_group" action="" accept-charset="UTF-8" method="post">
+				        <div class="form-group">
+					        <label class="form-control-label required">管理组名称：</label>
+					        <input  class="form-control" type="text" value="" id="groupName" />
+					    </div>
+					    <div class="form-group">
+					        <label class="form-control-label required">描述：</label>
+					        <input  class="form-control" type="text" value="" id="groupDesc" />
+					    </div>
+					    <div class="form-group">
+					     	<label class="form-control-label required">权限设置：</label>
+					     	<script type="text/javascript" th:src="@{/bootstrapvalidator-master/vendor/jquery/jquery.min.js}"></script>
+					       	<script type="text/javascript" th:src="@{/vendors/zTree_v3-master/js/jquery.ztree.core.js}"></script>
+							<script type="text/javascript" th:src="@{/vendors/zTree_v3-master/js/jquery.ztree.excheck.js}"></script>
+					
+							<div class="content_wrap" style=" border: 1px solid skyblue;">
+								<div class="zTreeDemoBackground left">
+									<ul id="treeDemo" class="ztree"></ul>
+								</div>
+							</div>	 
+							
+					    </div>
+				        <input id="ok" type="submit" name="submit" value="提交" class="btn btn-primary" data-disable-with="提交"/>
+				</form>
+			      
+				</div>
+			  </div>
+			</div>
+	</div>
+
+ <script type="text/javascript" th:src="@{/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js}"></script>
+ <script type="text/javascript" th:src="@{/bootstrapvalidator-master/dist/js/bootstrapValidator.js}"></script>
+ <script type="text/javascript" th:src="@{/vendors/layer-v2.4/layer/layer.js}"></script>
+ <script type="text/javascript" th:src="@{/js/common/jquery.tmpl.min.js}"></script>
+ <script type="text/javascript" th:src="@{/js/common/owl.js}"></script> 
+ <script type="text/javascript" th:src="@{/js/system/group-update.js}"></script>
+
+</body>
+</html>
