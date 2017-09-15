@@ -13,7 +13,6 @@ var articleInfoObj = {
 		getArticleInfo:function(){
 			var articleId = $("#articleId").val();
 			owl.ajaxRequest("/articleDetail",{"articleId":articleId},function(e){
-				console.log(JSON.stringify(e));
 				
 				$("#article-title").html(e.data.articleDetail.title);
 				$("#article-time").html(e.data.articleDetail.createDate);
