@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xiaoyuan.manage.web.dao.ArticleMapper" >
+<mapper namespace="com.demoba.manage.web.dao.ArticleMapper" >
   <resultMap id="BaseResultMap" type="com.demoba.manage.web.entity.Article" >
     <id column="n_article_id" property="nArticleId" jdbcType="BIGINT" />
     <result column="c_article_title" property="cArticleTitle" jdbcType="VARCHAR" />
@@ -10,13 +10,13 @@
     <result column="t_update_time" property="tUpdateTime" jdbcType="TIMESTAMP" />
     <result column="n_create_id" property="nCreateId" jdbcType="BIGINT" />
      <result column="c_article_content" property="cArticleContent" jdbcType="LONGVARCHAR" />
-     <result column="n_count_comment" property="nCountComment" jdbcType="INTEGER" />
      <result column="n_top" property="nTop" jdbcType="INTEGER" />
      <result column="n_article_type" property="nArticleType" jdbcType="INTEGER" />
+     <result column="c_content_html" property="cContentHtml" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     n_article_id, c_article_title, c_article_tag, c_article_imgs, t_create_time, t_update_time, 
-    n_create_id,c_article_content,n_count_comment,n_top,n_article_type
+    n_create_id,c_article_content,n_top,n_article_type,c_content_html
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -31,12 +31,10 @@
   <insert id="insert" parameterType="com.demoba.manage.web.entity.Article" >
     insert into t_article (n_article_id, c_article_title, c_article_tag, 
       c_article_imgs, t_create_time, t_update_time, 
-      n_create_id, 
-      c_article_content,n_count_comment,n_top)
+      n_create_id, c_article_content,n_top,c_content_html)
     values (#{nArticleId,jdbcType=BIGINT}, #{cArticleTitle,jdbcType=VARCHAR}, #{cArticleTag,jdbcType=VARCHAR}, 
       #{cArticleImgs,jdbcType=VARCHAR}, #{tCreateTime,jdbcType=TIMESTAMP}, #{tUpdateTime,jdbcType=TIMESTAMP}, 
-      #{nCreateId,jdbcType=BIGINT},
-      #{cArticleContent,jdbcType=LONGVARCHAR},#{nCountComment,jdbcType=INTEGER},#{nTop,jdbcType=INTEGER})
+      #{nCreateId,jdbcType=BIGINT}, #{cArticleContent,jdbcType=LONGVARCHAR}, #{nTop,jdbcType=INTEGER}), #{cContentHtml,jdbcType=LONGVARCHAR}
   </insert>
   <insert id="insertSelective" parameterType="com.demoba.manage.web.entity.Article" >
     insert into t_article
@@ -65,11 +63,11 @@
       <if test="cArticleContent != null" >
         c_article_content,
       </if>
-      <if test="nCountComment!=null">
-      n_count_comment,
-      </if>
       <if test="nTop!=null">
       n_top,
+      </if>
+      <if test="cContentHtml!=null">
+      c_content_html,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -94,23 +92,14 @@
       <if test="nCreateId != null" >
         #{nCreateId,jdbcType=BIGINT},
       </if>
-      <if test="nSchoolId != null" >
-        #{nSchoolId,jdbcType=BIGINT},
-      </if>
-      <if test="cSchoolName != null" >
-        #{cSchoolName,jdbcType=VARCHAR},
-      </if>
       <if test="cArticleContent != null" >
         #{cArticleContent,jdbcType=LONGVARCHAR},
       </if>
-       <if test="nCountComment!=null">
-     	#{nCountComment,jdbcType=INTEGER},
-      </if>
-      <if test="nSubmitStatus!=null">
-     	#{nSubmitStatus,jdbcType=INTEGER},
-      </if>
       <if test="nTop!=null">
     	#{nTop,jdbcType=INTEGER},
+      </if>
+       <if test="cContentHtml!=null">
+    	#{cContentHtml,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -138,11 +127,11 @@
       <if test="cArticleContent != null" >
         c_article_content = #{cArticleContent,jdbcType=LONGVARCHAR},
       </if>
-       <if test="nCountComment!=null">
-      n_count_comment=#{nCountComment,jdbcType=INTEGER},
-      </if>
       <if test="nTop!=null">
     	n_top = #{nTop,jdbcType=INTEGER},
+      </if>
+       <if test="cContentHtml!=null">
+    	c_content_html = #{cContentHtml,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where n_article_id = #{nArticleId,jdbcType=BIGINT}
@@ -156,8 +145,8 @@
       t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
       n_create_id = #{nCreateId,jdbcType=BIGINT},
       c_article_content = #{cArticleContent,jdbcType=LONGVARCHAR},
-      n_count_comment = #{nCountComment,jdbcType=INTEGER},
-      n_top =#{nTop,jdbcType=INTEGER}
+      n_top =#{nTop,jdbcType=INTEGER},
+      c_content_html = #{cContentHtml,jdbcType=LONGVARCHAR}
     where n_article_id = #{nArticleId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.demoba.manage.web.entity.Article" >
@@ -169,8 +158,8 @@
       t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
       n_create_id = #{nCreateId,jdbcType=BIGINT},
       c_article_content = #{cArticleContent,jdbcType=LONGVARCHAR},
-      n_count_comment = #{nCountComment,jdbcType=INTEGER},
-      n_top =#{nTop,jdbcType=INTEGER}
+      n_top =#{nTop,jdbcType=INTEGER},
+      c_content_html = #{cContentHtml,jdbcType=LONGVARCHAR}
     where n_article_id = #{nArticleId,jdbcType=BIGINT}
   </update>
   <select id="findByParam" resultMap="BaseResultMap">

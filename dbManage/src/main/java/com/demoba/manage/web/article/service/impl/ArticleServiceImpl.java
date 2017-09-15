@@ -231,4 +231,19 @@ public class ArticleServiceImpl implements ArticleService {
 			return articleListDtos;
 		}
 
+		@Override
+		public Result delArticle(Long articleId) {
+			Result result = new Result();
+			if(Help.isNull(articleId)){
+				log.info("article不存在");
+				result.setStatus(Status.article_not_exist_status);
+				result.setInfo(Status.article_not_exist_info);
+				return result;
+			}
+			articleMapper.deleteByPrimaryKey(articleId);
+			result.setStatus(Status.success_status);
+			result.setInfo(Status.success_info);
+			return result;
+		}
+
 }

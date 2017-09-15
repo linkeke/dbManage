@@ -86,9 +86,9 @@ var articleObj = {
 				param.articleImgs = articleImgs.join("#");
 				param.contents = JSON.stringify(contentArr);
 				param.contentHtml = layedit.getContent(index);
-				help.ajaxRequest("/addArticle.do",param,function(e){
+				owl.ajaxRequest("/addArticle",param,function(e){
 					 layer.msg("保存成功!");
-					 location.href=getBasePath()+"/article/articleList.html";
+					 window.top.location=getBasePath()+"/articleListPage"; 
 				});	
 			}
 			

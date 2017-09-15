@@ -1,5 +1,5 @@
 .article-div{
-	width:800px;
+	width:80%;
 	margin:0 auto;
 }
 .article-content-div{
@@ -170,7 +170,7 @@ ul {
     height:75px;
     font-size: 14px;
 }
-.article-div .intro .tag,.article-div .article-intro .tag{
+.article-div .intro .timetag,.article-div .article-intro .timetag{
     position: absolute;
     line-height: 1.2;
     vertical-align: middle;
@@ -178,12 +178,12 @@ ul {
     width: 100%;
     font-size: 12px;
 }
-.article-div .intro .tag span,.article-div .article-intro .tag span{
+.article-div .intro .timetag span,.article-div .article-intro .timetag span{
     vertical-align: middle;
     display: inline-block;
 }
 .pubtime{
-	margin-left:20px;
+	
 }
 .article-div  .img_box img {
     width: 100%;

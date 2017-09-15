@@ -25,8 +25,6 @@ public interface ArticleMapper {
     List<Article> findByParam(Map<String,Object> param);
     int countByParam(Map<String,Object> param);
     
-    public void updateSchoolIdByUserId(@Param("userId") Long userId,@Param("schoolId") Long schoolId);
-    
     List<Article> findArticleList(Map<String,Object> param);
     int countArticleList(Map<String,Object> param);
 }

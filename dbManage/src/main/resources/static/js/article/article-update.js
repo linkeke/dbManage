@@ -19,7 +19,7 @@ var articleObj = {
 		                ,$ = layui.jquery;
 		        layedit.set({
 		        	  uploadImage: {
-		        	    url: getBasePath()+"/uploadArticleImg.do" //接口url
+		        	    url: getBasePath()+"/uploadArticleImg" //接口url
 		        	    ,type: 'post' //默认post
 		        	  }
 		        	});
@@ -65,7 +65,7 @@ var articleObj = {
 		},
 		getArticleInfo:function(){
 			var articleId = $("#articleId").val();
-			help.ajaxRequest("/articleDetail.do",{"articleId":articleId},function(e){
+			owl.ajaxRequest("/articleDetail",{"articleId":articleId},function(e){
 				var contentHtml = e.data.articleDetail.contentHtml;
 				$("#article-title").val(e.data.articleDetail.title);
 				$("#article-content").html(contentHtml);
@@ -96,7 +96,7 @@ var articleObj = {
 				param.contents = JSON.stringify(contentArr);
 				param.contentHtml = layedit.getContent(index);
 				
-				help.ajaxRequest("/updateArticle.do",param,function(e){
+				owl.ajaxRequest("/updateArticle",param,function(e){
 					 layer.msg("修改文章成功!");
 //					 location.href=getBasePath()+"/article/articleListPage";
 				});	

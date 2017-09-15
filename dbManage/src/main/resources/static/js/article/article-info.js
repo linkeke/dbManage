@@ -12,7 +12,7 @@ var pageCount=1;
 var articleInfoObj = {			
 		getArticleInfo:function(){
 			var articleId = $("#articleId").val();
-			help.ajaxRequest("/articleDetail.do",{"articleId":articleId},function(e){
+			owl.ajaxRequest("/articleDetail",{"articleId":articleId},function(e){
 				console.log(JSON.stringify(e));
 				
 				$("#article-title").html(e.data.articleDetail.title);

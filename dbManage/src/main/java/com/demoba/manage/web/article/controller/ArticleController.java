@@ -39,6 +39,10 @@ public class ArticleController {
         return "article/article-list";
     }
 	
+	@RequestMapping("/articleAddPage")
+    public String articleAddPage() {
+        return "article/article-add";
+    }
 	
 	@RequestMapping("/articleList")
 	@ResponseBody
@@ -95,9 +99,9 @@ public class ArticleController {
 	 }
 	 
 	 @RequestMapping("/articleInfoPage")	 
-	 public String articleInfoPageController(HttpServletRequest request,Model model,Long articleId){		 		 		
+	 public String articleInfoPage(HttpServletRequest request,Model model,Long articleId){		 		 		
 		 model.addAttribute("articleId", articleId);
-	     return "article/articleInfo";	 	
+	     return "article/article-info";	 	
 	 }
 	 
 	 @RequestMapping("/articleDetail")
@@ -114,9 +118,22 @@ public class ArticleController {
 	 }
 	 
 	 @RequestMapping("/updateArticlePage")	 
-	 public String updateArticlePageController(HttpServletRequest request,Model model,Long articleId){		 
+	 public String updateArticlePage(HttpServletRequest request,Model model,Long articleId){		 
 		 model.addAttribute("articleId", articleId);
-		 return "article/updateArticle";	 
+		 return "article/article-update";	 
+	 }
+	 
+	 @RequestMapping("/delArticle")
+	 @ResponseBody
+	 public Object delArticleController(HttpServletRequest request,Model model,Long articleId){
+		 Result result = null;
+		 try{
+			 result = articleService.delArticle(articleId);
+		 }catch(Exception ex){
+			 log.error("删除新闻失败", ex);
+			 result = new Result ();
+		 }
+		 return logger.infobk("删除新闻", result);	 
 	 }
 	
 }
