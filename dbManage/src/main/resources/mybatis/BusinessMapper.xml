@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demoba.manage.web.dao.BusinessMapper" >
+  <resultMap id="BaseResultMap" type="com.demoba.manage.web.entity.Business" >
+    <id column="n_business_id" property="nBusinessId" jdbcType="BIGINT" />
+    <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    <result column="c_email" property="cEmail" jdbcType="VARCHAR" />
+    <result column="c_contact" property="cContact" jdbcType="VARCHAR" />
+    <result column="c_mobile" property="cMobile" jdbcType="VARCHAR" />
+    <result column="c_company_name" property="cCompanyName" jdbcType="VARCHAR" />
+    <result column="c_company_addr" property="cCompanyAddr" jdbcType="VARCHAR" />
+    <result column="c_business_demand" property="cBusinessDemand" jdbcType="VARCHAR" />
+    <result column="t_create_time" property="tCreateTime" jdbcType="TIMESTAMP" />
+    <result column="t_update_time" property="tUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_business_id, c_name, c_email, c_contact, c_mobile, c_company_name, c_company_addr, 
+    c_business_demand, t_create_time, t_update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from business
+    where n_business_id = #{nBusinessId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from business
+    where n_business_id = #{nBusinessId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demoba.manage.web.entity.Business" >
+    insert into business (n_business_id, c_name, c_email, 
+      c_contact, c_mobile, c_company_name, 
+      c_company_addr, c_business_demand,t_create_time,t_update_time)
+    values (#{nBusinessId,jdbcType=BIGINT}, #{cName,jdbcType=VARCHAR}, #{cEmail,jdbcType=VARCHAR}, 
+      #{cContact,jdbcType=VARCHAR}, #{cMobile,jdbcType=VARCHAR}, #{cCompanyName,jdbcType=VARCHAR}, 
+      #{cCompanyAddr,jdbcType=VARCHAR}, #{cBusinessDemand,jdbcType=VARCHAR}, #{tCreateTime,jdbcType=TIMESTAMP}, #{tUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demoba.manage.web.entity.Business" >
+    insert into business
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nBusinessId != null" >
+        n_business_id,
+      </if>
+      <if test="cName != null" >
+        c_name,
+      </if>
+      <if test="cEmail != null" >
+        c_email,
+      </if>
+      <if test="cContact != null" >
+        c_contact,
+      </if>
+      <if test="cMobile != null" >
+        c_mobile,
+      </if>
+      <if test="cCompanyName != null" >
+        c_company_name,
+      </if>
+      <if test="cCompanyAddr != null" >
+        c_company_addr,
+      </if>
+      <if test="cBusinessDemand != null" >
+        c_business_demand,
+      </if>
+       <if test="tCreateTime != null" >
+        t_create_time,
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nBusinessId != null" >
+        #{nBusinessId,jdbcType=BIGINT},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmail != null" >
+        #{cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="cContact != null" >
+        #{cContact,jdbcType=VARCHAR},
+      </if>
+      <if test="cMobile != null" >
+        #{cMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cCompanyName != null" >
+        #{cCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="cCompanyAddr != null" >
+        #{cCompanyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cBusinessDemand != null" >
+        #{cBusinessDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="tCreateTime != null" >
+        #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tUpdateTime != null" >
+        #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demoba.manage.web.entity.Business" >
+    update business
+    <set >
+      <if test="cName != null" >
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmail != null" >
+        c_email = #{cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="cContact != null" >
+        c_contact = #{cContact,jdbcType=VARCHAR},
+      </if>
+      <if test="cMobile != null" >
+        c_mobile = #{cMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cCompanyName != null" >
+        c_company_name = #{cCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="cCompanyAddr != null" >
+        c_company_addr = #{cCompanyAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cBusinessDemand != null" >
+        c_business_demand = #{cBusinessDemand,jdbcType=VARCHAR},
+      </if>
+       <if test="tCreateTime != null" >
+        t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where n_business_id = #{nBusinessId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demoba.manage.web.entity.Business" >
+    update business
+    set c_name = #{cName,jdbcType=VARCHAR},
+      c_email = #{cEmail,jdbcType=VARCHAR},
+      c_contact = #{cContact,jdbcType=VARCHAR},
+      c_mobile = #{cMobile,jdbcType=VARCHAR},
+      c_company_name = #{cCompanyName,jdbcType=VARCHAR},
+      c_company_addr = #{cCompanyAddr,jdbcType=VARCHAR},
+      c_business_demand = #{cBusinessDemand,jdbcType=VARCHAR},
+      t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP}
+    where n_business_id = #{nBusinessId,jdbcType=BIGINT}
+  </update>
+  
+  
+   
+  <select id="findByParam" parameterType="java.util.Map" resultMap = "BaseResultMap">
+  select * from business 
+  <where>
+  	<if test="keyword!=null and keyword!=''">
+	 and (
+		 c_name like CONCAT('%','${keyword}','%' ) 
+	  	)
+  	</if>
+  </where>
+   	order by t_update_time DESC
+   	<if test="startRow!=null">
+   	limit #{startRow},#{pageSize}
+   	</if>
+  </select>
+  
+  <select id="countByParam" parameterType="java.util.Map" resultType = "java.lang.Integer">
+  select count(*) from business 
+  <where>
+  	<if test="keyword!=null and keyword!=''">
+	 and (
+		 c_name like CONCAT('%','${keyword}','%' ) 
+	  	)
+  	</if>
+  </where>
+  </select>
+  
+  
+  
+</mapper>
