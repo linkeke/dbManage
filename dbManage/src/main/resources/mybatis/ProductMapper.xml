@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demoba.manage.web.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.demoba.manage.web.entity.Product" >
+    <id column="n_product_id" property="nProductId" jdbcType="BIGINT" />
+    <result column="c_product_name" property="cProductName" jdbcType="VARCHAR" />
+    <result column="n_product_type_id" property="nProductTypeId" jdbcType="BIGINT" />
+    <result column="n_price" property="nPrice" jdbcType="DECIMAL" />
+    <result column="n_market_price" property="nMarketPrice" jdbcType="DECIMAL" />
+    <result column="c_product_desc" property="cProductDesc" jdbcType="VARCHAR" />
+    <result column="n_attention_rate" property="nAttentionRate" jdbcType="INTEGER" />
+    <result column="n_new_type" property="nNewType" jdbcType="INTEGER" />
+    <result column="t_create_time" property="tCreateTime" jdbcType="TIMESTAMP" />
+    <result column="t_update_time" property="tUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="n_create_by" property="nCreateBy" jdbcType="BIGINT" />
+    <result column="n_update_by" property="nUpdateBy" jdbcType="BIGINT" />
+    <result column="n_status" property="nStatus" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_product_id, c_product_name, n_product_type_id, n_price, n_market_price, c_product_desc, 
+    n_attention_rate, n_new_type, t_create_time, t_update_time, n_create_by, n_update_by, 
+    n_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where n_product_id = #{nProductId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_product
+    where n_product_id = #{nProductId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demoba.manage.web.entity.Product" >
+    insert into t_product (n_product_id, c_product_name, n_product_type_id, 
+      n_price, n_market_price, c_product_desc, 
+      n_attention_rate, n_new_type, t_create_time, 
+      t_update_time, n_create_by, n_update_by, 
+      n_status)
+    values (#{nProductId,jdbcType=BIGINT}, #{cProductName,jdbcType=VARCHAR}, #{nProductTypeId,jdbcType=BIGINT}, 
+      #{nPrice,jdbcType=DECIMAL}, #{nMarketPrice,jdbcType=DECIMAL}, #{cProductDesc,jdbcType=VARCHAR}, 
+      #{nAttentionRate,jdbcType=INTEGER}, #{nNewType,jdbcType=INTEGER}, #{tCreateTime,jdbcType=TIMESTAMP}, 
+      #{tUpdateTime,jdbcType=TIMESTAMP}, #{nCreateBy,jdbcType=BIGINT}, #{nUpdateBy,jdbcType=BIGINT}, 
+      #{nStatus,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demoba.manage.web.entity.Product" >
+    insert into t_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nProductId != null" >
+        n_product_id,
+      </if>
+      <if test="cProductName != null" >
+        c_product_name,
+      </if>
+      <if test="nProductTypeId != null" >
+        n_product_type_id,
+      </if>
+      <if test="nPrice != null" >
+        n_price,
+      </if>
+      <if test="nMarketPrice != null" >
+        n_market_price,
+      </if>
+      <if test="cProductDesc != null" >
+        c_product_desc,
+      </if>
+      <if test="nAttentionRate != null" >
+        n_attention_rate,
+      </if>
+      <if test="nNewType != null" >
+        n_new_type,
+      </if>
+      <if test="tCreateTime != null" >
+        t_create_time,
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time,
+      </if>
+      <if test="nCreateBy != null" >
+        n_create_by,
+      </if>
+      <if test="nUpdateBy != null" >
+        n_update_by,
+      </if>
+      <if test="nStatus != null" >
+        n_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nProductId != null" >
+        #{nProductId,jdbcType=BIGINT},
+      </if>
+      <if test="cProductName != null" >
+        #{cProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="nProductTypeId != null" >
+        #{nProductTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="nPrice != null" >
+        #{nPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="nMarketPrice != null" >
+        #{nMarketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cProductDesc != null" >
+        #{cProductDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="nAttentionRate != null" >
+        #{nAttentionRate,jdbcType=INTEGER},
+      </if>
+      <if test="nNewType != null" >
+        #{nNewType,jdbcType=INTEGER},
+      </if>
+      <if test="tCreateTime != null" >
+        #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tUpdateTime != null" >
+        #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nCreateBy != null" >
+        #{nCreateBy,jdbcType=BIGINT},
+      </if>
+      <if test="nUpdateBy != null" >
+        #{nUpdateBy,jdbcType=BIGINT},
+      </if>
+      <if test="nStatus != null" >
+        #{nStatus,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demoba.manage.web.entity.Product" >
+    update t_product
+    <set >
+      <if test="cProductName != null" >
+        c_product_name = #{cProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="nProductTypeId != null" >
+        n_product_type_id = #{nProductTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="nPrice != null" >
+        n_price = #{nPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="nMarketPrice != null" >
+        n_market_price = #{nMarketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cProductDesc != null" >
+        c_product_desc = #{cProductDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="nAttentionRate != null" >
+        n_attention_rate = #{nAttentionRate,jdbcType=INTEGER},
+      </if>
+      <if test="nNewType != null" >
+        n_new_type = #{nNewType,jdbcType=INTEGER},
+      </if>
+      <if test="tCreateTime != null" >
+        t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tUpdateTime != null" >
+        t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nCreateBy != null" >
+        n_create_by = #{nCreateBy,jdbcType=BIGINT},
+      </if>
+      <if test="nUpdateBy != null" >
+        n_update_by = #{nUpdateBy,jdbcType=BIGINT},
+      </if>
+      <if test="nStatus != null" >
+        n_status = #{nStatus,jdbcType=BIT},
+      </if>
+    </set>
+    where n_product_id = #{nProductId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demoba.manage.web.entity.Product" >
+    update t_product
+    set c_product_name = #{cProductName,jdbcType=VARCHAR},
+      n_product_type_id = #{nProductTypeId,jdbcType=BIGINT},
+      n_price = #{nPrice,jdbcType=DECIMAL},
+      n_market_price = #{nMarketPrice,jdbcType=DECIMAL},
+      c_product_desc = #{cProductDesc,jdbcType=VARCHAR},
+      n_attention_rate = #{nAttentionRate,jdbcType=INTEGER},
+      n_new_type = #{nNewType,jdbcType=INTEGER},
+      t_create_time = #{tCreateTime,jdbcType=TIMESTAMP},
+      t_update_time = #{tUpdateTime,jdbcType=TIMESTAMP},
+      n_create_by = #{nCreateBy,jdbcType=BIGINT},
+      n_update_by = #{nUpdateBy,jdbcType=BIGINT},
+      n_status = #{nStatus,jdbcType=BIT}
+    where n_product_id = #{nProductId,jdbcType=BIGINT}
+  </update>
+</mapper>

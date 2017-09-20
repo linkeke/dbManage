@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demoba.manage.web.dao.ProductTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.demoba.manage.web.entity.ProductType" >
+    <id column="n_product_type_id" property="nProductTypeId" jdbcType="BIGINT" />
+    <result column="c_type_name" property="cTypeName" jdbcType="VARCHAR" />
+    <result column="n_index" property="nIndex" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_product_type_id, c_type_name, n_index
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_producttype
+    where n_product_type_id = #{nProductTypeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_producttype
+    where n_product_type_id = #{nProductTypeId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demoba.manage.web.entity.ProductType" >
+    insert into t_producttype (n_product_type_id, c_type_name, n_index
+      )
+    values (#{nProductTypeId,jdbcType=BIGINT}, #{cTypeName,jdbcType=VARCHAR}, #{nIndex,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.demoba.manage.web.entity.ProductType" >
+    insert into t_producttype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nProductTypeId != null" >
+        n_product_type_id,
+      </if>
+      <if test="cTypeName != null" >
+        c_type_name,
+      </if>
+      <if test="nIndex != null" >
+        n_index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nProductTypeId != null" >
+        #{nProductTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="cTypeName != null" >
+        #{cTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nIndex != null" >
+        #{nIndex,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demoba.manage.web.entity.ProductType" >
+    update t_producttype
+    <set >
+      <if test="cTypeName != null" >
+        c_type_name = #{cTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nIndex != null" >
+        n_index = #{nIndex,jdbcType=INTEGER},
+      </if>
+    </set>
+    where n_product_type_id = #{nProductTypeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demoba.manage.web.entity.ProductType" >
+    update t_producttype
+    set c_type_name = #{cTypeName,jdbcType=VARCHAR},
+      n_index = #{nIndex,jdbcType=INTEGER}
+    where n_product_type_id = #{nProductTypeId,jdbcType=BIGINT}
+  </update>
+</mapper>
