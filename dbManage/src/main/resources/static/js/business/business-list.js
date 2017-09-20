@@ -10,7 +10,7 @@ var businessList = {
 			var param={};
 			param.page=page;
 			param.pageSize=pageSize;
-			help.ajaxRequest("/business/businessList.do",param,function(e){
+			owl.ajaxRequest("/businessList",param,function(e){
 //				console.log(e);
 				coursePageCount = e.data.pageCount;
 				$("#course-div").empty("");
